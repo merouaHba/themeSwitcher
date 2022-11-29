@@ -90,48 +90,33 @@ input {
   display: none;
 }
  
-/* Apply a default color scheme */
-@media (prefers-color-scheme: no-preference) {
-  :root {
-      --bg-color: #4389fb;
-      --text-color: #fff;
-    }
-}
 /* Apply a light color scheme */
 @media (prefers-color-scheme: light) {
- .base-theme {
+ :root {
    --bg-color: #fff;
   --text-color: #434343;
-  color: var(--text-color,#434343);
-  background: var( --bg-color, #fff);
+
 }
 }
 /* Apply a dark color scheme */
 @media (prefers-color-scheme: dark) {
- .base-theme {
+ :root {
     --bg-color: #434343;
   --text-color: #fff;
-  color: var(--text-color,#fff);
-  background: var( --bg-color, #434343);
 }
 }
 [id="white"]:checked ~ .base-theme {
    --bg-color: #fff;
   --text-color: #434343;
-  color: var(--text-color,#434343);
-  background: var( --bg-color, #fff);
+
 }
 [id="dark"]:checked ~ .base-theme {
     --bg-color: #434343;
   --text-color: #fff;
-  color: var(--text-color,#fff);
-  background: var( --bg-color, #434343);
 }
 [id="blue"]:checked ~ .base-theme {
     --bg-color: #4389fb;
   --text-color: #fff;
-  color: var(--text-color,#fff);
-  background: var( --bg-color, #4389fb);
 }
   </style>
 </head>
