@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Devfest22 Challenges | Theme changer</title>
+
+  <style>
+    /* Blue theme: 
+          background color : #4389fb
+          text color: #fff
+      */
+
+    /* Dark theme: 
+          background color : #434343;
+          text color: #fff
+      */
+
+    /* Light theme: 
+          background color : #fff;
+          text color: #434343
+      */
+
+    :root {
+      --bg-color: #fff;
+        --text-color: #000;
+    }
+
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    /* ================ Boilerplate design styling ================*/
+
+    label {
+      cursor: pointer;
+    }
+
+    .container {
+      transition: all 0.3s ease-in-out;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+
+    .color-palette {
+      position: fixed;
+      bottom: 0;
+      left: 45%;
+      width: 160px;
+      right: 15px;
+      display: flex;
+      gap: 40px;
+      padding: 10px;
+      border-radius: 20px;
+      background: rgba(0, 0, 0, 0.4);
+    }
+
+    .color-palette label {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+    }
+
+    .whiteButton {
+      background: #fff;
+    }
+
+    .darkButton {
+      background: #434343;
+    }
+
+    .blueButton {
+      background: #4389fb;
+    }
+
+    /* ================ Theme changer feature ================*/
+
+    .base-theme {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+    }
+input {
+  display: none;
+}
+ 
+/* Apply a default color scheme */
+@media (prefers-color-scheme: no-preference) {
+  :root {
+      --bg-color: #4389fb;
+      --text-color: #fff;
+    }
+}
+/* Apply a light color scheme */
+@media (prefers-color-scheme: light) {
+ .base-theme {
+   --bg-color: #fff;
+  --text-color: #434343;
+  color: var(--text-color,#434343);
+  background: var( --bg-color, #fff);
+}
+}
+/* Apply a dark color scheme */
+@media (prefers-color-scheme: dark) {
+ .base-theme {
+    --bg-color: #434343;
+  --text-color: #fff;
+  color: var(--text-color,#fff);
+  background: var( --bg-color, #434343);
+}
+}
+[id="white"]:checked ~ .base-theme {
+   --bg-color: #fff;
+  --text-color: #434343;
+  color: var(--text-color,#434343);
+  background: var( --bg-color, #fff);
+}
+[id="dark"]:checked ~ .base-theme {
+    --bg-color: #434343;
+  --text-color: #fff;
+  color: var(--text-color,#fff);
+  background: var( --bg-color, #434343);
+}
+[id="blue"]:checked ~ .base-theme {
+    --bg-color: #4389fb;
+  --text-color: #fff;
+  color: var(--text-color,#fff);
+  background: var( --bg-color, #4389fb);
+}
+  </style>
+</head>
+
+<body>
+
+  <!-- Don't you think we need to add something here ? -->
+  <input type="radio" id="white" name="colors" value="white">
+  <input type="radio" id="dark" name="colors" value="dark">
+  <input type="radio" id="blue" name="colors" value="red">
+  <div class="container base-theme">
+    <div class="color-palette">
+      <label for="white" class="whiteButton" data-bg-color="#fff" data-text-color="#434343"></label>
+      <label for="dark" class="darkButton" data-bg-color="#434343" data-text-color="#fff"></label>
+      <label for="blue" class="blueButton" data-bg-color="#4389fb" data-text-color="#fff"></label>
+      <!-- Did you notice the *for* attribute? -->
+    </div>
+    <div>
+      <h1>Welcome to Devfest22 Challenges!</h1>
+      <p style="text-align: center">Can you solve me using only CSS?</p>
+    </div>
+  </div>
+</body>
+
+</html>
